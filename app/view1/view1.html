@@ -6,7 +6,7 @@
      
       <input type="text" class="form-control" placeholder="ابحث" ng-model="query">
         <select ng-model="orderProp">
-        <option value="date">أحدث الأخبار</option>
+        <option value="-id">أحدث الأخبار</option>
         <option value="title">حسب العنوان</option>
         </select>
     </div><!-- /input-group -->
@@ -18,10 +18,10 @@
             <tr><th scope="col">العنوان</th><th scope="col">التفاصيل</th><th scope="col">التاريخ</th><th scope="col"></th></tr>
         </thead>
         <tbody>
-            <tr ng-repeat="news in allNews | filter:query | orderBy:orderProp">
-                <td class="edit" field="title" user_id="'+obj.id+'">{{news.name}}</td>
-                <td class="edit" field="date" user_id="'+obj.id+'">{{news.age}}</td>
-                <td class="edit" field="content" user_id="'+obj.id+'">{{news.snippet}}</td>
+            <tr ng-repeat="news in allNews.posts | filter:query | orderBy:orderProp">
+                <td class="edit" field="title" user_id="'+obj.id+'">{{news.title}}</td>
+                <td class="edit" field="content" user_id="'+obj.id+'">{{news.content}}</td>
+                <td class="edit" field="date" user_id="'+obj.id+'">{{news.date}}</td>
                 <td><a href="javascript:void" user_id="'+obj.id+'" class="delete_confirm btn btn-danger"><i class="icon-remove icon-white"></i></a></td>
             </tr>
         </tbody>
@@ -29,6 +29,16 @@
     </table>
     
 </div>
+
+
+<ul>
+  <li ng-repeat="news in allNews">
+    {{ news.Name + ', ' + news.Country }}
+  </li>
+</ul>
+
+
+
 <nav>
         <ul class="pager">
             <li class="previous disabled"><a href="#"><span aria-hidden="true">الأقدم</span>  &larr;</a></li>

@@ -1,16 +1,29 @@
 'use strict';
 
-describe('myApp.view1 module', function() {
+describe('myApp.view1 module', function () {
 
-  beforeEach(module('myApp.view1'));
 
-  describe('view1 controller', function(){
+    describe('view1 controller', function () {
+        var scope, ctrl, $httpBackend;
 
-    it('should ....', inject(function($controller) {
-      //spec body
-      var view1Ctrl = $controller('View1Ctrl');
-      expect(view1Ctrl).toBeDefined();
-    }));
+        beforeEach(module('myApp.view1'));
+        beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
+            $httpBackend = _$httpBackend_;
+            $httpBackend.expectGET('view1/news.json').
+                    respond([{title: 'خبر طري'}]);
 
-  });
+            scope = $rootScope.$new();
+            ctrl = $controller('View1Ctrl', {$scope: scope});
+        }));
+        
+        
+        it('should create news model with 1 news fetched from xhr', function () {
+            expect(scope.allNews).toBeUndefined();
+            $httpBackend.flush();
+
+            expect(scope.allNews).toEqual([{title: 'خبر طري'}]);
+        });
+        
+        
+    });
 });
