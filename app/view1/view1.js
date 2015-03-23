@@ -11,7 +11,7 @@ angular.module('myApp.view1', ['ngRoute'])
        
 .controller('View1Ctrl', ['$scope', '$http', function ($scope, $http) {
                 //$scope.allNews = 
-               $http.get("view1/news.json")
+               $http.get("Controller2.php")
                 .success(function (response) {$scope.allNews = response;});               
                 $scope.orderProp = "-id";
             }]);
