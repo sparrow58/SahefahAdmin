@@ -9,7 +9,7 @@ describe('myApp.view1 module', function () {
         beforeEach(module('myApp.view1'));
         beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('view1/news.json').
+            $httpBackend.expectGET('Controller.php?action=get_users').
                     respond([{title: 'خبر طري'}]);
 
             scope = $rootScope.$new();
