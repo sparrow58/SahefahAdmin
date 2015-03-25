@@ -11,8 +11,17 @@ angular.module('myApp.view1', ['ngRoute'])
        
 .controller('View1Ctrl', ['$scope', '$http', function ($scope, $http) {
                 //$scope.allNews = 
-               $http.get("Controller2.php")
-                .success(function (response) {$scope.allNews = response;});               
+//               $http.get("Controller.php", {action: 'get_users'})
+//                .success(function (response) {$scope.allNews = response;});                
+                $http({
+                        method: "get",
+                        url: "Controller.php",
+                        params: {
+                            action: "get_users"
+                        }
+                    }).success(function (response) {$scope.allNews = response;});     
+        
+        
                 $scope.orderProp = "-id";
             }]);
         

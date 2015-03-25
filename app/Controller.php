@@ -3,7 +3,7 @@ function __autoload($className){
 	include_once("models/$className.php");	
 }
 //database setup
-$users=new User("localhost","sahefah_dbr","sS7350139666","sahefah_crud");
+$users=new User("localhost","root","","sahefah_crud");
 //check weather there is a post requist or not
 
 
@@ -19,7 +19,13 @@ if(!empty($_GET['shareRegId'])) {
 }
 
 //wait for a post request that comes from js/custom.js to perform an action
-switch($_POST['action']) {
+switch(isset($_GET['action']))  {
+    case 'get_users'://incase 'get_users' post requist occurse:
+		print $users->getUsers();		
+	break;
+}
+
+switch( isset($_POST['action'])) {
 	case 'get_users'://incase 'get_users' post requist occurse:
 		print $users->getUsers();		
 	break;

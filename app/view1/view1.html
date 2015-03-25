@@ -11,33 +11,26 @@
         </select>
     </div><!-- /input-group -->
     </div>
+    
+
 
     <!-- Table -->
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <tr><th scope="col">العنوان</th><th scope="col">التفاصيل</th><th scope="col">التاريخ</th><th scope="col"></th></tr>
         </thead>
         <tbody>
             <tr ng-repeat="news in allNews.posts | filter:query | orderBy:orderProp">
-                <td class="edit" field="title" user_id="'+obj.id+'">{{news.title}}</td>
-                <td class="edit" field="content" user_id="'+obj.id+'">{{news.content}}</td>
-                <td class="edit" field="date" user_id="'+obj.id+'">{{news.date}}</td>
-                <td><a href="javascript:void" user_id="'+obj.id+'" class="delete_confirm btn btn-danger"><i class="icon-remove icon-white"></i></a></td>
+                <td class="field-label col-xs-4 active" field="title" user_id="'+obj.id+'">{{news.title}}</td>
+                <td class=col-md-4" field="content" user_id="'+obj.id+'">{{news.content}}</td>
+                <td class=col-md-3" field="date" user_id="'+obj.id+'">{{news.date}}</td>
+                <td class=col-md-1"><a href="javascript:void" user_id="'+obj.id+'" class="delete_confirm btn btn-danger"><i class="icon-remove icon-white"></i></a></td>
             </tr>
         </tbody>
        
     </table>
     
 </div>
-
-
-<ul>
-  <li ng-repeat="news in allNews">
-    {{ news.Name + ', ' + news.Country }}
-  </li>
-</ul>
-
-
 
 <nav>
         <ul class="pager">
