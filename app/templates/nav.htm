@@ -1,15 +1,17 @@
-<div class="navbar">
+<div class="navbar" ng-controller="GreetingController">
     <div class="navbar-inner">
         <ul class="nav nav-pills">
-            <li role="presentation" class="active"><i class="icon-th icon-black"></i><a href="#/view1"><i class="icon-th icon-black"></i>عرض</a></li>
-            <li role="presentation"><a href="#/view2"><i class="icon-th icon-black"></i>إضافة</a> </li>
+            <li role="presentation" ng-class="{ active:isSelected(1)}"><i class="icon-th icon-black"></i>
+                <a href="#/view1" ng-click="selectTab(1)"><i class="icon-th icon-black"></i>عرض </a></li>
+            <li role="presentation" ng-class="{ active:isSelected(2) }">
+                <a href="#/view2" ng-click="selectTab(2)"><i class="icon-th icon-black"></i>إضافة</a> </li>
         </ul>
     </div>
 
 </div>
 
 
-
+<!--
 <div id="indicator" style="display: none; text-align: center;" class="loading_img">
 	<img src="ui/img/indicator.gif"/>
-</div>
+</div>-->

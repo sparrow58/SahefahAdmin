@@ -126,3 +126,10 @@ body {
 textarea {
 	height: 56px;
 }
+
+.ng-valid.ng-dirty{
+    border-color: green;
+}
+.ng-invalid .ng-dirty{
+    border-color: red;
+}

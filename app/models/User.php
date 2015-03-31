@@ -150,11 +150,24 @@ class User {
                 }              		
 	}
         //function for adding user to the database
-	public function add($user){		
-		$sth = $this->dbh->prepare("INSERT INTO news(title,date , content,syncsts) VALUES (?, ? , ? , ?)");
-		$sth->execute(array($user->title,$user->date, $user->content ,$user->syncsts));		
-		return json_encode($this->dbh->lastInsertId());
+	public function add($news){		
+               
+		$sth = $this->dbh->prepare("INSERT INTO news(title,content) VALUES (?, ? )");
+		$sth->execute(array($news->title,$news->details ));
+                
+		//return json_encode($this->dbh->lastInsertId());
+//                $response["success"] = 1;
+//                $response["message"] = "Added";
+                
+                $data['success'] = true;
+                $data['message'] = 'تمت اضافة الخبر';
+              
 	}
+        public function addNews($news){
+                $sth = $this->dbh->prepare("INSERT INTO news (title,date,content) VALUES (?,?, ? )");
+                
+		$sth->execute(array($news['title'],$news['date'],$news['details'] ));
+        }
 	//function to delete user from the database
 	public function delete($user){				
 		$sth = $this->dbh->prepare("DELETE FROM news WHERE id=?");

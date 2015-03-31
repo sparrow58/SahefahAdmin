@@ -2,16 +2,16 @@
 <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">
-    <div class="input-group">
-     
-      <input type="text" class="form-control" placeholder="ابحث" ng-model="query">
-        <select ng-model="orderProp">
-        <option value="-id">أحدث الأخبار</option>
-        <option value="title">حسب العنوان</option>
-        </select>
-    </div><!-- /input-group -->
+        <div class="input-group">
+
+            <input type="text" class="form-control" placeholder="ابحث" ng-model="query">
+            <select ng-model="orderProp">
+                <option value="-date">أحدث الأخبار</option>
+                <option value="title">حسب العنوان</option>
+            </select>
+        </div><!-- /input-group -->
     </div>
-    
+
 
 
     <!-- Table -->
@@ -20,21 +20,21 @@
             <tr><th scope="col">العنوان</th><th scope="col">التفاصيل</th><th scope="col">التاريخ</th><th scope="col"></th></tr>
         </thead>
         <tbody>
-            <tr ng-repeat="news in allNews.posts | filter:query | orderBy:orderProp">
+            <tr ng-repeat="news in allNews.posts| filter:query | orderBy:orderProp">
                 <td class="field-label col-xs-4 active" field="title" user_id="'+obj.id+'">{{news.title}}</td>
                 <td class=col-md-4" field="content" user_id="'+obj.id+'">{{news.content}}</td>
-                <td class=col-md-3" field="date" user_id="'+obj.id+'">{{news.date}}</td>
+                <td class=col-md-3" field="date" user_id="'+obj.id+'">{{news.date| date: 'M/d/yy h:mm a'}}</td>
                 <td class=col-md-1"><a href="javascript:void" user_id="'+obj.id+'" class="delete_confirm btn btn-danger"><i class="icon-remove icon-white"></i></a></td>
             </tr>
         </tbody>
-       
-    </table>
-    
-</div>
 
+    </table>
+
+</div>
 <nav>
-        <ul class="pager">
-            <li class="previous disabled"><a href="#"><span aria-hidden="true">الأقدم</span>  &larr;</a></li>
-            <li class="next disabled"><a href="#"> &rarr;<span aria-hidden="true">الأحدث</span></a></li>
-        </ul>
-    </nav>
+    <ul class="pager">
+        <li class="previous disabled"><a href="#"><span aria-hidden="true">الأقدم</span>  &larr;</a></li>
+        <li class="next disabled"><a href="#"> &rarr;<span aria-hidden="true">الأحدث</span></a></li>
+    </ul>
+</nav>
+

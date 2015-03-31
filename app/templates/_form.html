@@ -1,0 +1,19 @@
+<!-- NAME -->
+		<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorTitle }">
+			
+			<input type="text" name="title" class="form-control" placeholder="العنوان*" ng-model="formData.title">
+                        <span class="help-block" ng-show="errorTitle">{{ errorTitle }}</span>
+		</div>
+
+		<!-- SUPERHERO NAME -->
+		<div id="superhero-group" class="form-group" ng-class="{ 'has-error' : errorDetails }">
+			
+			<input type="text" name="superheroAlias" class="form-control" placeholder="التفاصيل" ng-model="formData.details">
+			<span class="help-block" ng-show="errorDetails">{{ errorDetails }}</span>
+		</div>
+                
+
+		<!-- SUBMIT BUTTON -->
+		<button type="submit" class="btn btn-success btn-lg btn-block">
+			<span class="glyphicon glyphicon-flash"></span> اضافة!
+		</button>
