@@ -9,18 +9,14 @@ $users = new User("localhost", "root", "", "sahefah_crud");
 
 
 $errors         = array();  	// array to hold validation errors
-$temp        = array();  	// array to hold validation errors
 $data           = array(); 		// array to pass back data
 
 // validate the variables ======================================================
-	if (empty($_POST['title']))
-		$errors['title'] = 'العنوان مطلوب';
+	if (empty($_POST['id']))
+		$errors['id'] = 'no id found';
 
-	if (empty($_POST['details']))
-        {
-             $errors['details'] = 'التفاصيل مطلوبة';   
-        }
-		
+//	if (empty($_POST['details']))
+//		$errors['details'] = 'Superhero alias is required.';
 
 // return a response ===========================================================
 
@@ -33,19 +29,17 @@ $data           = array(); 		// array to pass back data
 	} else {
 
 		// if there are no errors, return a message
-                $title = $_POST['title'];
-                $details = $_POST['details'];
-                $date = round(microtime(true) * 1000);//date('Y-m-d H:i:s');
+                $id = $_POST['id'];
+                
+                
                 
                 $news = array(
-                  'title' => $title,
-                  'details' => $details,
-                  'date' => $date
+                  'id' => $id,
                 );
-                $users->addNews($news);
-                $gcmRegIds = $users->getGCM();
+                $users->deleteNews($news);
+                
 		$data['success'] = true;
-		$data['message'] = 'تم اضافة الخبر';
+		$data['msg'] = 'تم حذف الخبر';
                 //$data['message'] = $title;
 	}
 

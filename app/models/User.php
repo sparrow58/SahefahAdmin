@@ -74,7 +74,7 @@ class User {
                         $post["title"] = $row["title"];
                         $post["date"]    = $row["date"];
                         //$post["mobile"]  = $row["mobile"];
-                        $post["content"]  = $row["content"]; 
+                        $post["details"]  = $row["details"]; 
                         $post["status"]  = $row["syncsts"]; 
 
 
@@ -103,7 +103,7 @@ class User {
                         $post["title"] = $row["title"];
                         $post["date"]    = $row["date"];
                         
-                        $post["content"]  = $row["content"]; 
+                        $post["details"]  = $row["details"]; 
                         $post["status"]  = $row["syncsts"]; 
 
 
@@ -135,7 +135,7 @@ class User {
                         $post["title"] = $row["title"];
                         $post["date"]    = $row["date"];
                         //$post["mobile"]  = $row["mobile"];
-                        $post["content"]  = $row["content"]; 
+                        $post["details"]  = $row["details"]; 
                         $post["status"]  = $row["syncsts"]; 
 
 
@@ -152,7 +152,7 @@ class User {
         //function for adding user to the database
 	public function add($news){		
                
-		$sth = $this->dbh->prepare("INSERT INTO news(title,content) VALUES (?, ? )");
+		$sth = $this->dbh->prepare("INSERT INTO news(title,details) VALUES (?, ? )");
 		$sth->execute(array($news->title,$news->details ));
                 
 		//return json_encode($this->dbh->lastInsertId());
@@ -164,7 +164,7 @@ class User {
               
 	}
         public function addNews($news){
-                $sth = $this->dbh->prepare("INSERT INTO news (title,date,content) VALUES (?,?, ? )");
+                $sth = $this->dbh->prepare("INSERT INTO news (title,date,details) VALUES (?,?, ? )");
                 
 		$sth->execute(array($news['title'],$news['date'],$news['details'] ));
         }
@@ -172,6 +172,11 @@ class User {
 	public function delete($user){				
 		$sth = $this->dbh->prepare("DELETE FROM news WHERE id=?");
 		$sth->execute(array($user->id));
+		return json_encode(1);
+	}
+        public function deleteNews($news){				
+		$sth = $this->dbh->prepare("DELETE FROM news WHERE id=?");
+		$sth->execute(array($news['id']));
 		return json_encode(1);
 	}
 	//function to update user to the database

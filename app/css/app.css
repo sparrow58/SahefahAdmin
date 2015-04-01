@@ -133,3 +133,13 @@ textarea {
 .ng-invalid .ng-dirty{
     border-color: red;
 }
+input:focus {
+    //change more attributes, if you want.
+}
+input {
+    border:none;
+    background-color:transparent;
+}
+ul, input, .container {
+    padding:10px;
+}

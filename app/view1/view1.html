@@ -21,10 +21,18 @@
         </thead>
         <tbody>
             <tr ng-repeat="news in allNews.posts| filter:query | orderBy:orderProp">
-                <td class="field-label col-xs-4 active" field="title" user_id="'+obj.id+'">{{news.title}}</td>
-                <td class=col-md-4" field="content" user_id="'+obj.id+'">{{news.content}}</td>
-                <td class=col-md-3" field="date" user_id="'+obj.id+'">{{news.date| date: 'M/d/yy h:mm a'}}</td>
-                <td class=col-md-1"><a href="javascript:void" user_id="'+obj.id+'" class="delete_confirm btn btn-danger"><i class="icon-remove icon-white"></i></a></td>
+                <td class="field-label col-xs-4 active"  field="title" data-id="'{{news.id}}'" ng-dblclick="editItem(news)"><span ng-hide="news.editing">{{news.title}}</span>
+                <input ng-show="news.editing" ng-model="news.title" ng-blur="doneEditing(news)" type="text" autofocus />
+                
+                </td>
+                
+                <td class="col-md-4"  field="details" data-id="{{news.id}}'"  ng-dblclick="editItem(news)"> <span ng-hide="news.editing">{{news.details}}</span>
+                    <input ng-show="news.editing" ng-model="news.details" ng-blur="doneEditing(news)" type="text" autofocus />
+                </td>
+                
+                
+                <td class="col-md-3" field="date" data-id="'{{news.id}}">{{news.date| date: 'M/d/yy h:mm a'}}</td>
+                <td class="col-md-1"><button class="btn btn-danger" data-id="'{{news.id}}" ng-click="open('sm',$index)">حذف    </button></td>
             </tr>
         </tbody>
 
@@ -37,4 +45,6 @@
         <li class="next disabled"><a href="#"> &rarr;<span aria-hidden="true">الأحدث</span></a></li>
     </ul>
 </nav>
+    {{id}}
+
 
